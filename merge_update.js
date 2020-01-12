@@ -24,6 +24,7 @@ function mergeUpdate(arrOld, arrNew) {
       if (JSON.stringify(arrNew[x]) === JSON.stringify(matchArray[y])) {
           arrNew.splice(x, 1);
           matchArray.splice(y, 1);
+          continue;
       }
     }
   }
