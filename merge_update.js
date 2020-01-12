@@ -1,4 +1,10 @@
-function mergeUpdate (arrOld, arrNew) {
+/**
+ *
+ * @authors Ted Shiu (tedshd@gmail.com)
+ * @date    2020-01-12 22:39:02
+ */
+
+function mergeUpdate(arrOld, arrNew) {
   var tmpArray = [],
     matchArray = [];
 
@@ -12,19 +18,12 @@ function mergeUpdate (arrOld, arrNew) {
   }
 
   matchArray = tmpArray.slice();
-  loop();
 
-  function loop () {
-    if (!matchArray.length) {
-      return;
-    }
-    for (var x = 0; arrNew.length > x; x++) {
-      for (var y = 0; matchArray.length > y; y++) {
-        if (JSON.stringify(arrNew[x]) === JSON.stringify(matchArray[y])) {
+  for (var x = arrNew.length - 1; x >= 0; x--) {
+    for (var y = matchArray.length - 1; y >= 0; y--) {
+      if (JSON.stringify(arrNew[x]) === JSON.stringify(matchArray[y])) {
           arrNew.splice(x, 1);
           matchArray.splice(y, 1);
-          return loop();
-        }
       }
     }
   }
